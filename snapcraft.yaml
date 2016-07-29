@@ -1,0 +1,24 @@
+name: etcd-cmars
+version: 0  # the version of the snap
+summary: etcd
+description: etcd
+confinement: strict
+
+apps:
+    etcd:
+        daemon: simple
+        command: usr/bin/etcd
+        plugs:
+            - network
+            - network-bind
+    ctl:
+        command: usr/bin/etcdctl
+        plugs:
+            - network
+            - network-bind
+
+parts:
+    pkg:
+        plugin: nil
+        stage-packages:
+            - etcd
